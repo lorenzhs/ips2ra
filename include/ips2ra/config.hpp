@@ -298,7 +298,7 @@ struct ExtendedConfig : public Cfg {
 
     template <class T>
     static inline T getBucket(const T val, int level) {
-        assert(sizeof(T) > level);
+        assert(sizeof(T) > static_cast<size_t>(level));
         return (val >> (8 * (sizeof(T) - level - 1))) & 0xFF;
     }
 
